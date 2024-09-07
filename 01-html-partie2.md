@@ -1,4 +1,4 @@
-# **Cours HTML Progressif : Étape par Étape**
+# **HTML  : Étape par Étape - partie 2**
 
 ### **Étape 1 : Découverte des Balises de Base**
 
