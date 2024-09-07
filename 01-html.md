@@ -1,10 +1,10 @@
 ### Introduction à HTML 
 
-#### 1. **Qu'est-ce que HTML ?**
+# 1. **Qu'est-ce que HTML ?**
    - **HTML** (HyperText Markup Language) est le langage utilisé pour créer des pages web. Il permet de structurer le contenu comme des titres, du texte, des images, des liens, et bien plus.
    - **But** : Organiser et présenter le contenu sur une page web que les navigateurs peuvent lire et afficher correctement.
 
-#### 2. **Structure de Base d'une Page HTML**
+# 2. **Structure de Base d'une Page HTML**
    Chaque page HTML suit une structure de base :
    ```html
    <!DOCTYPE html>
@@ -25,7 +25,7 @@
      - `<title>` : Le titre de votre page. Il apparaît dans l'onglet du navigateur.
      - `<body>` : Tout le contenu visible de votre page (titres, paragraphes, images, etc.) est placé entre ces balises.
 
-#### 3. **Les Balises HTML les Plus Importantes**
+# 3. **Les Balises HTML les Plus Importantes**
    **Les balises sont des mots-clés entourés de crochets angulaires (<>).**
    
    - **Titres** : Utilisez les balises de titre pour hiérarchiser votre contenu. Plus le chiffre est petit, plus le titre est important.
@@ -96,7 +96,7 @@
        - `<th>` : Définit l'en-tête d'une colonne (souvent en gras).
        - `<td>` : Définit une cellule de données dans le tableau.
 
-#### 4. **Les Attributs HTML**
+# 4. **Les Attributs HTML**
    - Les attributs fournissent des informations supplémentaires sur les balises.
    - Ils apparaissent dans la balise d'ouverture et contiennent des paires nom/valeur.
    - Exemple :
@@ -106,13 +106,13 @@
      - **`href`** : Définit l'URL du lien.
      - **`target="_blank"`** : Ouvre le lien dans un nouvel onglet.
 
-#### 5. **Les Commentaires en HTML**
+# 5. **Les Commentaires en HTML**
    - Les commentaires sont utilisés pour laisser des notes ou des explications dans le code. Ils ne sont pas affichés sur la page web.
      ```html
      <!-- Ceci est un commentaire -->
      ```
 
-#### 6. **Formulaires HTML (simplifié pour débutants)**
+# 6. **Formulaires HTML (simplifié pour débutants)**
    Les formulaires permettent aux utilisateurs de soumettre des informations comme leur nom ou adresse email.
    ```html
    <form>
@@ -127,7 +127,7 @@
      - `<input type="text">` : Champ où l'utilisateur peut entrer du texte.
      - `<input type="submit">` : Bouton pour soumettre le formulaire.
 
-#### 7. **Hiérarchie et Lisibilité du Code**
+# 7. **Hiérarchie et Lisibilité du Code**
    - **Indentation** : Utilisez des espaces ou des tabulations pour rendre votre code plus lisible.
    - Exemple :
      ```html
@@ -142,26 +142,25 @@
      </html>
      ```
 
-#### 8. **Pratique**
+# 8. **Pratique**
    - **Exercice 1** : Créez une page avec un titre principal, deux sous-titres, et trois paragraphes de texte.
    - **Exercice 2** : Ajoutez une image et un lien vers un autre site web.
    - **Exercice 3** : Créez une liste numérotée et une liste avec des puces.
    - **Exercice 4** : Créez un formulaire simple où un utilisateur peut entrer son nom et appuyer sur "Envoyer".
 
-#### 9. **Conclusion**
+# 9. **Conclusion**
    - HTML est le squelette de chaque page web. Il permet de structurer l'information de manière ordonnée.
    - Au fur et à mesure, vous pouvez ajouter des styles avec **CSS** (Cascading Style Sheets) et des interactions avec **JavaScript** pour créer des pages interactives et dynamiques.
 
-#### 10. **Ressources Complémentaires**
+# 10. **Ressources Complémentaires**
    - **Documentation officielle** : [MDN Web Docs - HTML](https://developer.mozilla.org/fr/docs/Web/HTML).
 
 
 ----
 # Correction des exercices : 
 ----
-
-Voici la correction progressive des quatre exercices proposés dans la section 8.
-
+---
+---
 ---
 
 # **Exercice 1 : Créez une page avec un titre principal, deux sous-titres, et trois paragraphes de texte.**
@@ -199,6 +198,10 @@ Voici la correction progressive des quatre exercices proposés dans la section 8
 - Trois paragraphes (`<p>`).
 
 ---
+----
+---
+---
+---
 
 # **Exercice 2 : Ajoutez une image et un lien vers un autre site web.**
 
@@ -228,6 +231,10 @@ Voici la correction progressive des quatre exercices proposés dans la section 8
 - Utilisation de la balise `<img>` pour afficher une image avec l'attribut `src` pour la source de l'image et `alt` pour la description en cas de problème d'affichage.
 - Un lien hypertexte est créé avec la balise `<a>` et l'attribut `href` pour rediriger vers un autre site web.
 
+---
+----
+---
+---
 ---
 
 # **Exercice 3 : Créez une liste numérotée et une liste avec des puces.**
@@ -267,7 +274,10 @@ Voici la correction progressive des quatre exercices proposés dans la section 8
 - Une **liste non ordonnée** est créée avec la balise `<ul>` (unordered list), également avec des éléments `<li>`.
 
 ---
-
+----
+---
+---
+---
 # **Exercice 4 : Créez un formulaire simple où un utilisateur peut entrer son nom et appuyer sur "Envoyer".**
 
 #### Correction :
