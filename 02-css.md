@@ -1,5 +1,8 @@
-# **Cours CSS : Étape par Étape **
+# **Cours CSS : Étape par Étape**
 
+# Références : 
+- https://drive.google.com/drive/folders/1Imd8TABaGPREFbZoz54YKFcQT3SjXZ-0?usp=sharing
+  
 ### **1. Introduction : Créer votre première page avec du CSS**
 
 #### Objectif : Appliquer du CSS basique à une page HTML.
