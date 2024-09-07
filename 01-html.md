@@ -1,5 +1,7 @@
-### Introduction à HTML 
-
+# Introduction à HTML 
+# Référence : 
+- https://drive.google.com/drive/folders/1Imd8TABaGPREFbZoz54YKFcQT3SjXZ-0?usp=sharing
+  
 # 1. **Qu'est-ce que HTML ?**
    - **HTML** (HyperText Markup Language) est le langage utilisé pour créer des pages web. Il permet de structurer le contenu comme des titres, du texte, des images, des liens, et bien plus.
    - **But** : Organiser et présenter le contenu sur une page web que les navigateurs peuvent lire et afficher correctement.
