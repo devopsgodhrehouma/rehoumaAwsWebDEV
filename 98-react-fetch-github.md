@@ -1,124 +1,185 @@
-## Création d'une application React avec Create React App
+# Tutoriel : Création d'une application React de recherche d'utilisateurs GitHub
 
-### 1. Prérequis
+# 1. Création du projet
 
-Assurez-vous d'avoir Node.js et npm installés sur votre machine. Vous pouvez vérifier leur présence en exécutant dans un terminal :
-
-```
-node --version
-npm --version
-```
-
-Si ce n'est pas le cas, téléchargez et installez Node.js depuis le site officiel[1].
-
-### 2. Création de l'application
-
-Ouvrez un terminal et naviguez vers le dossier où vous souhaitez créer votre projet. Puis exécutez la commande suivante :
+Ouvrez un terminal et exécutez :
 
 ```
-npx create-react-app mon-app-react
+npx create-react-app github-user-search
+cd github-user-search
 ```
 
-Remplacez "mon-app-react" par le nom que vous souhaitez donner à votre application[7].
+# 2. Installation des dépendances
 
-### 3. Navigation vers le dossier du projet
-
-Une fois la création terminée, naviguez vers le dossier de votre application :
+Installez Bootstrap :
 
 ```
-cd mon-app-react
+npm install bootstrap
 ```
 
-### 4. Lancement de l'application
+# 3. Nettoyage du projet
 
-Démarrez votre application en mode développement :
+Supprimez les fichiers suivants dans le dossier `src` :
+- App.test.js
+- logo.svg
+- reportWebVitals.js
+- setupTests.js
+
+# 4. Modification du fichier index.js
+
+Ouvrez `src/index.js` et remplacez son contenu par :
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+# 5. Création du composant App
+
+Remplacez le contenu de `src/App.js` par :
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
+function App() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    if (searchTerm) {
+      const debounceSearch = setTimeout(() => {
+        searchUsers();
+      }, 300);
+
+      return () => clearTimeout(debounceSearch);
+    } else {
+      setUsers([]);
+    }
+  }, [searchTerm]);
+
+  const searchUsers = async () => {
+    try {
+      const response = await fetch(`https://api.github.com/search/users?q=${searchTerm}`);
+      const data = await response.json();
+      const detailedUsers = await Promise.all(
+        data.items.slice(0, 8).map(async (user) => {
+          const userResponse = await fetch(user.url);
+          return userResponse.json();
+        })
+      );
+      setUsers(detailedUsers);
+    } catch (error) {
+      console.error('Erreur lors de la recherche:', error);
+    }
+  };
+
+  return (
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Recherche d'utilisateurs GitHub</h1>
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <input
+            type="text"
+            className="form-control mb-4"
+            placeholder="Entrez un nom d'utilisateur"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="row g-4">
+        {users.map((user) => (
+          <UserCard key={user.id} user={user} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function UserCard({ user }) {
+  return (
+    <div className="col-md-3 mb-4">
+      <div className="card user-card h-100">
+        <img src={user.avatar_url} className="user-avatar card-img-top mx-auto mt-3" alt={user.login} />
+        <div className="card-body text-center">
+          <h5 className="card-title">{user.name || user.login}</h5>
+          <p className="card-text">
+            <small className="text-muted">@{user.login}</small><br />
+            {user.bio && <><small>{user.bio}</small><br /></>}
+            <small>Repos: {user.public_repos} | Followers: {user.followers}</small>
+          </p>
+          <a href={user.html_url} className="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Voir le profil</a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+# 6. Création du fichier CSS
+
+Créez ou modifiez `src/App.css` avec le contenu suivant :
+
+```css
+.user-card {
+  transition: all 0.3s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+```
+
+# 7. Lancement de l'application
+
+Dans le terminal, exécutez :
 
 ```
 npm start
 ```
 
-Votre application devrait maintenant être accessible à l'adresse http://localhost:3000 dans votre navigateur[7].
+Votre application devrait maintenant être accessible à l'adresse http://localhost:3000.
 
-### 5. Structure du projet
+# 8. Explication du code
 
-Explorez la structure de votre projet. Les fichiers principaux se trouvent dans le dossier `src`. Le point d'entrée principal est `src/index.js` et le composant principal est `src/App.js`[5].
+- Le composant `App` gère l'état de la recherche et des utilisateurs trouvés.
+- `useEffect` est utilisé pour déclencher la recherche avec un délai de 300ms après chaque modification de la saisie.
+- La fonction `searchUsers` effectue la recherche via l'API GitHub et récupère les détails de chaque utilisateur.
+- Le composant `UserCard` affiche les informations de chaque utilisateur dans une carte.
 
-### 6. Modification du composant App
+# 9. Personnalisation
 
-Ouvrez `src/App.js` et modifiez-le pour créer votre premier composant personnalisé. Par exemple :
+Vous pouvez maintenant personnaliser davantage l'application en ajoutant des fonctionnalités comme la pagination, la gestion des erreurs, ou en améliorant le design.
 
-```jsx
-import React from 'react';
-import './App.css';
+# 10. Construction pour la production
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Bienvenue dans mon application React</h1>
-      <p>C'est mon premier composant personnalisé !</p>
-    </div>
-  );
-}
-
-export default App;
-```
-
-### 7. Ajout de dépendances
-
-Si vous avez besoin d'ajouter des bibliothèques supplémentaires, utilisez npm. Par exemple, pour ajouter React Router :
-
-```
-npm install react-router-dom
-```
-
-### 8. Création de nouveaux composants
-
-Créez de nouveaux fichiers dans le dossier `src` pour vos composants. Par exemple, `src/MonComposant.js` :
-
-```jsx
-import React from 'react';
-
-function MonComposant() {
-  return <div>Ceci est un nouveau composant</div>;
-}
-
-export default MonComposant;
-```
-
-### 9. Utilisation des composants
-
-Importez et utilisez vos nouveaux composants dans `App.js` ou d'autres composants :
-
-```jsx
-import React from 'react';
-import MonComposant from './MonComposant';
-
-function App() {
-  return (
-    <div className="App">
-      <h1>Mon Application React</h1>
-      <MonComposant />
-    </div>
-  );
-}
-
-export default App;
-```
-
-### 10. Construction pour la production
-
-Lorsque vous êtes prêt à déployer votre application, exécutez :
+Lorsque vous êtes prêt à déployer, exécutez :
 
 ```
 npm run build
 ```
 
-Cela créera une version optimisée de votre application dans le dossier `build`[7].
+Cela créera une version optimisée de votre application dans le dossier `build`.
 
-### Conseils supplémentaires
-
-- Utilisez les hooks React comme `useState` et `useEffect` pour gérer l'état et les effets secondaires dans vos composants fonctionnels[6].
-- Explorez les outils de développement React dans votre navigateur pour déboguer votre application.
-- N'hésitez pas à consulter la documentation officielle de React et de Create React App pour approfondir vos connaissances[1][7].
-
-Ce tutoriel vous donne les bases pour démarrer avec React. N'hésitez pas à explorer davantage et à expérimenter avec différents concepts de React à mesure que vous développez votre application !
+Ce tutoriel vous guide à travers la création de l'application React de recherche d'utilisateurs GitHub. N'hésitez pas à expérimenter et à ajouter d'autres fonctionnalités pour améliorer l'application !
