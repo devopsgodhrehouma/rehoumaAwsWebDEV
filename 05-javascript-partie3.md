@@ -198,3 +198,70 @@ Ce README regroupe une série d'exercices destinée à introduire les concepts d
 #### 4. `Number()`
 - Tentez de convertir des chaînes de caractères en nombres
 
+
+
+
+## Exercice 1.6 : Suite Fonctions Prédéfinies
+
+### Objectif
+Explorer l'utilisation des fonctions prédéfinies pour convertir les types de données et comprendre comment JavaScript gère les conversions et les cas d'erreur.
+
+### Détails de l'exercice
+Utilisez les fonctions `parseFloat()`, `parseInt()`, `String()`, et `Number()` pour convertir différentes valeurs et affichez les résultats. Testez chaque fonction avec différents types de données pour voir comment elles réagissent aux valeurs valides et invalides.
+
+#### Tests Suggérés
+
+1. **parseFloat()**
+   - `"54.78"`: Devrait retourner `54.78`.
+   - `"54.78abc"`: Devrait retourner `54.78`.
+   - `"abc54.78"`: Devrait retourner `NaN` car la chaîne commence par un caractère non numérique.
+
+2. **parseInt()**
+   - `"54"`: Devrait retourner `54`.
+   - `"54abc"`: Devrait retourner `54` car `parseInt()` ignore les caractères non numériques après les chiffres.
+   - `"abc54"`: Devrait retourner `NaN` car la chaîne commence par des caractères non numériques.
+   - `"4d"`: Devrait retourner `4`.
+   - `"d4"`: Devrait retourner `NaN`.
+
+3. **String()**
+   - `55`: Devrait convertir le nombre `55` en chaîne `"55"`.
+   - `true`: Devrait convertir la valeur booléenne `true` en chaîne `"true"`.
+
+4. **Number()**
+   - `"54"`: Devrait retourner `54`.
+   - `"54abc"`: Devrait retourner `NaN` car la chaîne contient des caractères non numériques.
+   - `true`: Devrait retourner `1` car `true` est converti en `1` en JavaScript.
+
+### Code de Démarrage
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 1.5 : Fonctions Prédéfinies</title>
+</head>
+<body>
+    <script>
+        console.log("parseFloat('54.78'):", parseFloat('54.78'));
+        console.log("parseFloat('54.78abc'):", parseFloat('54.78abc'));
+        console.log("parseFloat('abc54.78'):", parseFloat('abc54.78'));
+
+        console.log("parseInt('54'):", parseInt('54'));
+        console.log("parseInt('54abc'):", parseInt('54abc'));
+        console.log("parseInt('abc54'):", parseInt('abc54'));
+        console.log("parseInt('4d'):", parseInt('4d'));
+        console.log("parseInt('d4'):", parseInt('d4'));
+
+        var num = 55;
+        console.log("String(55):", String(num));
+
+        console.log("Number('54'):", Number('54'));
+        console.log("Number('54abc'):", Number('54abc'));
+        console.log("Number(true):", Number(true));
+    </script>
+</body>
+</html>
+```
+
+### Discussion
+Discutez des cas d'utilisation typiques pour chaque fonction et pourquoi il est important de comprendre comment elles fonctionnent, surtout en ce qui concerne la validation des entrées utilisateur dans les applications web. Ces fonctions jouent un rôle crucial dans la manipulation des données et la conversion des types lors du développement d'applications interactives.
