@@ -212,3 +212,4 @@ while (i < 5) {
 
 **Exercice :**
 1. Créez une boucle `for` qui affiche tous les nombres de 1 à 10 dans la console.
+
