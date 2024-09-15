@@ -1,7 +1,8 @@
 
 ### Code JavaScript pour la validation du formulaire
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/c8f49e56-8834-4184-a1d5-539cd69ce4ac)
+
 
 ```javascript
 // Fonction pour vérifier que le champ "Nom" n'est pas vide
