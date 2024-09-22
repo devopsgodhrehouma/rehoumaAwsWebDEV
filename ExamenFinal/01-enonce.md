@@ -44,17 +44,12 @@
 
 # Section 3 : Projet de Gestion des Étudiants (10%)
 
-Développez un mini-projet de gestion des étudiants en utilisant les tables fournies (etudiants et programme). Votre projet doit inclure :
-
-1. (2%) Un script SQL pour créer les tables dans la base de données.
-2. (6%)  
-Créez un fichier `AjoutEtudiant.php` avec le contenu de base suivant :
-Créez un fichier `ListeEtudiants.php` avec le contenu de base suivant :
-Créez un fichier `ValiderAjoutEtudiant.php` avec le contenu de base suivant :
-
-4. (2%) Utilisation de PDO ou mysqli pour toutes les opérations de base de données.
-
-Fournissez le code source de tous les fichiers PHP créés et des captures d'écran montrant le fonctionnement de votre application.
+# Complétez l'annexe 2 
+- Développez un mini-projet de gestion des étudiants en utilisant les tables fournies (etudiants et programme). 
+- Complétez l'annexe 2 . Il contient du code pour vous aider. Il suffit de suivre le même style ci-haut !
+- Créez un fichier `AjoutEtudiant.php`
+- Créez un fichier `ValiderAjoutEtudiant.php`
+- Fournissez le code source de tous les fichiers PHP créés et des captures d'écran montrant le fonctionnement de votre application.
 
 
 # ANNEXE : Relation entre les tables:
