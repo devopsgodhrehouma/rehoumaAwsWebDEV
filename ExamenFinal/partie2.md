@@ -111,3 +111,20 @@ $conn = null;
 
 - Cette version utilise PDO pour une meilleure sécurité et une gestion plus moderne des connexions à la base de données. 
 - Elle inclut également une meilleure gestion des erreurs et un nettoyage des entrées utilisateur.
+
+
+
+# Table récapitulant les méthodes **built-in** de PHP utilisées dans notre code :
+
+| Méthode PHP intégrée      | Description                                                                                       | Exemple d'utilisation                                             |
+|---------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| **`new PDO()`**            | Crée une connexion à une base de données en utilisant PDO.                                         | `$conn = new PDO("mysql:host=" . $serveur . ";dbname=" . $bd, $utilisateur, $pwd);` |
+| **`setAttribute()`**       | Définit un attribut sur un objet PDO, ici pour gérer les erreurs en mode exception.                | `$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);`  |
+| **`query()`**              | Exécute une requête SQL sur la base de données et retourne un objet PDOStatement.                  | `$stmt = $conn->query($query);`                                   |
+| **`rowCount()`**           | Renvoie le nombre de lignes affectées ou retournées par une requête SQL.                           | `if ($stmt->rowCount() > 0) {`                                    |
+| **`fetch()`**              | Récupère la prochaine ligne de résultat d'une requête sous forme de tableau associatif.            | `$row = $stmt->fetch(PDO::FETCH_ASSOC);`                          |
+| **`die()`**                | Arrête l'exécution du script et affiche un message d'erreur.                                       | `die("Erreur de connexion : " . $e->getMessage());`                |
+| **`null`**                 | Utilisé pour fermer la connexion à la base de données en définissant la variable à `null`.         | `$conn = null;`                                                   |
+| **`PDOException`**         | Gère les exceptions liées aux bases de données lorsque PDO est utilisé.                           | `catch (PDOException $e) { ... }`                                 |
+
+- Cette table présente les méthodes intégrées en PHP utilisé dans le script cci-haut pour interagir avec la base de données et gérer les erreurs.
