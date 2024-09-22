@@ -154,3 +154,22 @@ $conn->close();
 6. Vous devriez voir un message confirmant que l'employé a été ajouté avec succès.
 7. Cliquez sur le lien "Retour au formulaire" pour ajouter un autre employé si vous le souhaitez.
 
+
+
+# Table récapitulant les méthodes **built-in** (intégrées) utilisées dans notre code PHP pour la création de l'application de gestion des employés :
+
+| Méthode PHP intégrée      | Description                                                                                       | Exemple d'utilisation                                             |
+|---------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| **`new mysqli()`**         | Crée une nouvelle connexion à une base de données MySQL en utilisant l'extension MySQLi.           | `$conn = new mysqli($serveur, $utilisateur, $pwd, $bd);`          |
+| **`connect_error`**        | Vérifie s'il y a eu une erreur lors de la connexion à la base de données.                         | `if ($conn->connect_error) { ... }`                               |
+| **`die()`**                | Arrête l'exécution du script et affiche un message d'erreur si la connexion échoue.               | `die("Connexion échouée : " . $conn->connect_error);`             |
+| **`query()`**              | Exécute une requête SQL sur la base de données et retourne un objet MySQLi result.                | `$result = $conn->query($query);`                                 |
+| **`num_rows`**             | Renvoie le nombre de lignes affectées ou retournées par une requête SQL.                          | `if ($result->num_rows > 0) { ... }`                              |
+| **`fetch_assoc()`**        | Récupère une ligne du résultat sous forme d'un tableau associatif (clé-valeur).                   | `$row = $result->fetch_assoc();`                                  |
+| **`real_escape_string()`**  | Échappe les caractères spéciaux dans une chaîne pour les utiliser dans une requête SQL.            | `$nomR = $conn->real_escape_string($_POST['nomF']);`              |
+| **`prepare()`**            | Prépare une requête SQL pour l'exécution avec des paramètres (prévention d'injections SQL).       | `$stmt = $conn->prepare($query);`                                 |
+| **`bind_param()`**         | Lie des variables aux paramètres de la requête préparée.                                          | `$stmt->bind_param("sss", $nomR, $prenomR, $boutiqueR);`          |
+| **`execute()`**            | Exécute la requête SQL préparée.                                                                  | `if ($stmt->execute()) { ... }`                                   |
+| **`close()`**              | Ferme la connexion à la base de données ou l'objet MySQLi après utilisation.                      | `$stmt->close(); $conn->close();`                                 |
+
+Cette table résume les méthodes intégrées qui sont utilisées pour interagir avec la base de données MySQL dans le cadre de l'application de gestion des employés.
