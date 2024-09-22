@@ -47,7 +47,11 @@
 Développez un mini-projet de gestion des étudiants en utilisant les tables fournies (etudiants et programme). Votre projet doit inclure :
 
 1. (2%) Un script SQL pour créer les tables dans la base de données.
-2. (6%) 
+2. (6%)  
+Créez un fichier `AjoutEtudiant.php` avec le contenu de base suivant :
+Créez un fichier `ListeEtudiants.php` avec le contenu de base suivant :
+Créez un fichier `ValiderAjoutEtudiant.php` avec le contenu de base suivant :
+
 4. (2%) Utilisation de PDO ou mysqli pour toutes les opérations de base de données.
 
 Fournissez le code source de tous les fichiers PHP créés et des captures d'écran montrant le fonctionnement de votre application.
@@ -88,3 +92,127 @@ Fournissez le code source de tous les fichiers PHP créés et des captures d'éc
 - **Relation Many-to-One** : 
   - Plusieurs étudiants peuvent être inscrits dans un même programme. La clé étrangère `id_programme` dans la table `etudiants` permet de relier chaque étudiant à son programme d'études spécifique.
 
+# Annexe 2 - la partie 10%
+
+# Projet de Gestion des Étudiants (10%)
+
+## Étape 1 : Création de la base de données
+
+Créez un fichier `create_database.sql` avec le contenu suivant :
+
+```sql
+CREATE DATABASE IF NOT EXISTS gestion_etudiants;
+
+USE gestion_etudiants;
+
+CREATE TABLE programme (
+    id_programme INT(11) PRIMARY KEY AUTO_INCREMENT,
+    code VARCHAR(10) NOT NULL,
+    intitule VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE etudiants (
+    id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(100) NOT NULL,
+    age INT(11) NOT NULL,
+    id_programme INT(11),
+    FOREIGN KEY (id_programme) REFERENCES programme(id_programme)
+);
+
+-- Ajoutez ici des INSERT INTO pour peupler la table programme
+```
+
+## Étape 2 : Création du fichier AjoutEtudiant.php
+
+Créez un fichier `AjoutEtudiant.php` avec le contenu de base suivant :
+
+```php
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Étudiant</title>
+</head>
+<body>
+    <h1>Ajouter un Nouvel Étudiant</h1>
+    <form action="ValiderAjoutEtudiant.php" method="post">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br><br>
+        
+        <label for="age">Âge :</label>
+        <input type="number" id="age" name="age" required><br><br>
+        
+        <label for="programme">Programme :</label>
+        <select id="programme" name="programme" required>
+            <?php
+            // Ajoutez ici le code pour récupérer et afficher les programmes depuis la base de données
+            ?>
+        </select><br><br>
+        
+        <input type="submit" value="Ajouter">
+    </form>
+</body>
+</html>
+```
+
+## Étape 3 : Création du fichier ValiderAjoutEtudiant.php
+
+Créez un fichier `ValiderAjoutEtudiant.php` avec le contenu de base suivant :
+
+```php
+<?php
+// Ajoutez ici le code pour la connexion à la base de données
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nom = // Récupérez et nettoyez la valeur de $_POST['nom']
+    $age = // Récupérez et nettoyez la valeur de $_POST['age']
+    $id_programme = // Récupérez et nettoyez la valeur de $_POST['programme']
+
+    // Ajoutez ici le code pour insérer l'étudiant dans la base de données
+    
+    // Ajoutez ici le code pour gérer les erreurs et afficher un message de succès
+}
+?>
+```
+
+## Étape 4 : Création du fichier ListeEtudiants.php
+
+Créez un fichier `ListeEtudiants.php` avec le contenu de base suivant :
+
+```php
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Étudiants</title>
+</head>
+<body>
+    <h1>Liste des Étudiants</h1>
+    <table border="1">
+        <tr>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Programme</th>
+        </tr>
+        <?php
+        // Ajoutez ici le code pour récupérer et afficher les étudiants depuis la base de données
+        ?>
+    </table>
+</body>
+</html>
+```
+
+## Instructions pour les étudiants :
+
+1. Complétez le fichier `create_database.sql` en ajoutant des INSERT INTO pour peupler la table programme.
+2. Dans `AjoutEtudiant.php`, ajoutez le code PHP nécessaire pour récupérer les programmes depuis la base de données et les afficher dans le menu déroulant.
+3. Complétez `ValiderAjoutEtudiant.php` en ajoutant le code pour :
+   - Se connecter à la base de données
+   - Récupérer et nettoyer les données du formulaire
+   - Insérer l'étudiant dans la base de données
+   - Gérer les erreurs et afficher un message de succès
+4. Dans `ListeEtudiants.php`, ajoutez le code PHP pour récupérer tous les étudiants de la base de données et les afficher dans le tableau HTML.
+5. Assurez-vous d'utiliser PDO pour toutes les opérations de base de données.
+6. Testez votre application et fournissez des captures d'écran montrant son fonctionnement.
+
+Expliquez brièvement le rôle de chaque fichier et les principales modifications que vous avez apportées.
