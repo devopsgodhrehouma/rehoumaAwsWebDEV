@@ -539,9 +539,6 @@ function chargerEtudiants() {
 }
 
 
-### public/js/script.js (suite)
-
-```javascript
 function chargerProgrammes() {
     fetch('../api/programmes/getAll.php')
         .then(response => response.json())
@@ -595,7 +592,7 @@ function handleEtudiantSubmit(e) {
             document.getElementById('formEtudiant').reset();
             document.getElementById('etudiantForm').style.display = 'none';
         } else {
-            alert('Erreur lors de l'opération');
+            alert("Erreur lors de l'opération");
         }
     })
     .catch(error => console.error('Erreur:', error));
@@ -622,7 +619,7 @@ function handleProgrammeSubmit(e) {
             document.getElementById('formProgramme').reset();
             document.getElementById('programmeForm').style.display = 'none';
         } else {
-            alert('Erreur lors de l'opération');
+            alert("Erreur lors de l'opération");
         }
     })
     .catch(error => console.error('Erreur:', error));
