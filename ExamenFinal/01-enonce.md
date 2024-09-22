@@ -11,12 +11,12 @@
 
 ### Partie 2 : Projet PDO (18%)
 1. Créez un dossier nommé "gestion_employes_pdo" dans votre répertoire htdocs.
-2. Copiez-collez le code fourni pour AjoutEmployee.php et ValiderAjoutEmployee.php utilisant PDO dans ce dossier.
+2. Copiez-collez le code fourni pour AjoutEmployee.php et ValiderAjoutEmployee.php utilisant PDO dans ce dossier  (voir partie2.md).
 3. Configurez correctement la base de données.
 4. Testez l'application en ajoutant un nouvel employé.
 5. Envoyez un screenshot du formulaire rempli et un autre du message de confirmation après l'ajout.
 
-## Section 2 : Compréhension des mécanismes (54%)
+# Section 2 : Compréhension des mécanismes (54%)
 
 ### Partie 1 : MySQLi (27%)
 
@@ -42,15 +42,49 @@
 8. (3%) Expliquez le rôle du fichier ValiderAjoutEmployee.php dans le projet PDO. Que fait-il et comment interagit-il avec la base de données ?
 9. (3%) Comment gérez-vous les exceptions avec PDO ? Donnez un exemple de code.
 
-## Section 3 : Projet de Gestion des Étudiants (10%)
+# Section 3 : Projet de Gestion des Étudiants (10%)
 
 Développez un mini-projet de gestion des étudiants en utilisant les tables fournies (etudiants et programme). Votre projet doit inclure :
 
-1. (2%) Un script PHP pour créer les tables dans la base de données.
-2. (3%) Une page PHP pour ajouter un nouvel étudiant, incluant un menu déroulant pour sélectionner le programme.
-3. (3%) Une page PHP pour afficher la liste de tous les étudiants avec leurs informations de programme.
-4. (2%) Utilisation de PDO pour toutes les opérations de base de données.
+1. (2%) Un script SQL pour créer les tables dans la base de données.
+2. (6%) 
+4. (2%) Utilisation de PDO ou mysqli pour toutes les opérations de base de données.
 
 Fournissez le code source de tous les fichiers PHP créés et des captures d'écran montrant le fonctionnement de votre application.
 
-Ce nouvel examen couvre 90% avec les sections sur la gestion des employés et la compréhension des mécanismes, plus 10% pour le projet de gestion des étudiants, totalisant 100%.
+
+# ANNEXE : Relation entre les tables:
+
+### **Structure de la Base de Données pour la Gestion des Étudiants et de leurs Programmes d'Études**
+
+#### Diagramme ASCII des Tables :
+
+```
++--------------------------------+     +-------------------------------+
+|           etudiants            |     |           programme           |
++--------------------------------+     +-------------------------------+
+| id           | INT(11)         |<-+  | id_programme | INT(11)        |
+| nom          | VARCHAR(100)    |  |  | code         | VARCHAR(10)    |
+| age          | INT(11)         |  |  | intitule     | VARCHAR(100)   |
+| id_programme | INT(11)         |--+  +-------------------------------+
++--------------------------------+
+```
+
+#### Description des Tables :
+
+- **Table `etudiants`** :
+  - **id** : Clé primaire, identifiant unique pour chaque étudiant.
+  - **nom** : Nom de l'étudiant.
+  - **age** : Âge de l'étudiant.
+  - **id_programme** : Clé étrangère qui fait référence à `id_programme` dans la table `programme`.
+
+- **Table `programme`** :
+  - **id_programme** : Clé primaire, identifiant unique pour chaque programme.
+  - **code** : Code abrégé du programme, par exemple `LEA.E3`.
+  - **intitule** : Titre complet du programme, tel que "SPÉCIALISTE EN INTELLIGENCE ARTIFICIELLE".
+
+#### Relations entre les Tables :
+
+- **Relation Many-to-One** : 
+  - Plusieurs étudiants peuvent être inscrits dans un même programme. La clé étrangère `id_programme` dans la table `etudiants` permet de relier chaque étudiant à son programme d'études spécifique.
+
